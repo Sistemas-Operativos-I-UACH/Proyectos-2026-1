@@ -3,7 +3,7 @@ Proyectos de la clase de Sistemas Operativos primer semestre del 2026
 
 ## Lista de equipos
 * [Iván Chavero (Domador de Computadoras)](examples)
-* [NOMBRE EQUPO](directorio del equipo)
+* [Equipo RAMDOM](Equipo RAMdom)
 
   
 ## Instrucciones
