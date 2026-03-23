@@ -3,7 +3,7 @@
 
 /*
  * Lee un archivo
-* /
+*/
 int read_file(char *);
 
 int main(int argc, char *argv[]) {
