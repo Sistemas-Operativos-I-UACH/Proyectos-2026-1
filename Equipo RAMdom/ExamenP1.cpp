@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     if(argc < 2)
     {
         printf("Hay un error: Debe escribir el nombre del archivo en la linea de comando, intenta de nuevo\n");
-        printf("Ejemplo: programa.exe datos.txt\n");
+        printf("Ejemplo: ./programa datos.txt\n");
         return 1;
     }
 	//Solo abre el archivo en modo lectura
@@ -33,4 +33,5 @@ int main(int argc, char *argv[])
 
     //cierra el archivo para liberar recursos
     fclose(archivo);
+	return 0;
 }
