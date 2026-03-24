@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Franklyn Jesus Robles Venzor - 377119
+//Luis Raymundo Rodriguez Luna - 199761
+//Jesus Gerardo Fernandez Quintero - 374392
+
 static void mostrar_uso(const char *programa) {
     fprintf(stderr, "Uso: %s <archivo>\n", programa);
 }
