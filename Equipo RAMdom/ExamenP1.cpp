@@ -33,4 +33,5 @@ int main(int argc, char *argv[])
 
     //cierra el archivo para liberar recursos
     fclose(archivo);
+	return 0;
 }
