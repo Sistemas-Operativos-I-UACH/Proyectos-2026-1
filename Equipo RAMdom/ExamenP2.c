@@ -14,53 +14,39 @@ int main(int argc, char *argv[]) {
 
     DIR *dir = opendir(proc_dir);
 
-    /*if ( argc < 1 ) {
-        printf("Uso: %s <archivo a abrir>\n", argv[0]);
-        return 1;
-    }*/
-
     if (dir == NULL) {
         perror("Error al abrir el directorio");
         return EXIT_FAILURE;
     }
+    // Imprimimos el encabezado de la tabla
+    printf("%-8s %-8s %-25s %-10s\n", "PID", "PPID", "NOMBRE", "TIPO");
+    printf("%-8s %-8s %-25s %-10s\n", "---", "----", "------", "----");
 
     while ((entrada = readdir(dir)) != NULL) {
         if ( !isdigit(entrada->d_name[0]) )
             continue;
+    // LÓGICA DE CLASIFICACIÓN:
+    // Si el PID es 2 (kthreadd) o si su padre (PPID) es el proceso 2, es Kernel.
+    char *tipo = (status.pid == 2 || status.ppid == 2) ? "Kernel" : "Usuario";
 
         // d_name contiene el nombre del archivo o subdirectorio
        if ( get_proc_info(&status, entrada->d_name) == -1 ) {
         // Proceso fantasma que ya desapareció. Lo ignoramos y seguimos.
             continue;
     }
-        printf("PID: %s, PPID: %d nombre: %s\n",
-               entrada->d_name,
-               status.ppid,
-               status.comm);
+       printf("%-8d %-8d %-25s %-10s\n", 
+               status.pid, 
+               status.ppid, 
+               status.comm, 
+               tipo);
+                
 
     }
 
     closedir(dir);
 
-    /*if( !read_file(argv[1]) ) {
-        return 1;
-    }*/
-
     return EXIT_SUCCESS;
 }
-
-/*
-int get_proc_name(char *filename, char *dirname) {
-
-
-}*/
-
-
-/*
-*
-* Lee un archivo de proceso del directorio proc
-*
-*/
 int get_proc_info(struct proc_stat *stat_out, char *pid) {
     char buffer[512];
     char stat_filename[128];
