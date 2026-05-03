@@ -5,6 +5,7 @@
 #include "proc.h"
 
 const char proc_dir[] = "/proc";
+int get_proc_info(struct proc_stat *stat_out, char *pid)
 
 int main(int argc, char *argv[]) {
     struct dirent *entrada;
@@ -28,11 +29,10 @@ int main(int argc, char *argv[]) {
             continue;
 
         // d_name contiene el nombre del archivo o subdirectorio
-        if ( get_proc_info(&status, entrada->d_name) == -1 ) {
-            printf("Error leyendo archivo de proceso: /proc/%s/stat\n",
-                   entrada->d_name);
-            return EXIT_FAILURE;
-        }
+       if ( get_proc_info(&status, entrada->d_name) == -1 ) {
+        // Proceso fantasma que ya desapareció. Lo ignoramos y seguimos.
+            continue;
+    }
         printf("PID: %s, PPID: %d nombre: %s\n",
                entrada->d_name,
                status.ppid,
