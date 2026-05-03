@@ -23,24 +23,22 @@ int main(int argc, char *argv[]) {
     printf("%-8s %-8s %-25s %-10s\n", "---", "----", "------", "----");
 
     while ((entrada = readdir(dir)) != NULL) {
+        // d_name contiene el nombre del archivo o subdirectorio
         if ( !isdigit(entrada->d_name[0]) )
             continue;
+        if ( get_proc_info(&status, entrada->d_name) == -1 ) {
+        // Proceso fantasma que ya desapareció. Lo ignoramos y seguimos.
+            continue;
+        }
     // LÓGICA DE CLASIFICACIÓN:
     // Si el PID es 2 (kthreadd) o si su padre (PPID) es el proceso 2, es Kernel.
     char *tipo = (status.pid == 2 || status.ppid == 2) ? "Kernel" : "Usuario";
-
-        // d_name contiene el nombre del archivo o subdirectorio
-       if ( get_proc_info(&status, entrada->d_name) == -1 ) {
-        // Proceso fantasma que ya desapareció. Lo ignoramos y seguimos.
-            continue;
-    }
+        
        printf("%-8d %-8d %-25s %-10s\n", 
                status.pid, 
                status.ppid, 
                status.comm, 
                tipo);
-                
-
     }
 
     closedir(dir);
