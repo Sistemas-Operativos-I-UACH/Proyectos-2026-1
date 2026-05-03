@@ -5,7 +5,7 @@
 #include "proc.h"
 
 const char proc_dir[] = "/proc";
-int get_proc_info(struct proc_stat *stat_out, char *pid)
+int get_proc_info(struct proc_stat *stat_out, char *pid);
 
 int main(int argc, char *argv[]) {
     struct dirent *entrada;
