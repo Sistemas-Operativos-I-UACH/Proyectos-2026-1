@@ -10,7 +10,6 @@ int get_proc_info(struct proc_stat *stat_out, char *pid);
 int main(int argc, char *argv[]) {
     struct dirent *entrada;
     struct proc_stat status;
-    char filename[255];
 
     DIR *dir = opendir(proc_dir);
 
