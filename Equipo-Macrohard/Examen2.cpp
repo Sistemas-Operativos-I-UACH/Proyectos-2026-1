@@ -6,6 +6,10 @@
 #include <iomanip>
 #include <string>
 
+//Jesus Gerardo Fernandez Quintero 374392
+//Luis Raymundo Rodriguez Luna     199761
+//Franklyn Jesus Robles Venzor     377119
+
 using namespace std;
 
 // Secuencias ANSI para renderizar colores y estilos en la terminal (espacio de usuario)
