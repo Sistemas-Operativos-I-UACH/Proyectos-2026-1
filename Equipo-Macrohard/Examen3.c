@@ -9,6 +9,10 @@
 #include <linux/mutex.h>
 #include <linux/version.h>
 
+//Franklyn Jesus Robles Venzor - 377119
+//Jesus Gerardo Fernandez Quintero - 374392
+//Luis Raymundo Rodriguez Luna - 199761
+
 // Metadatos del módulo
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Sistemas operativos");
